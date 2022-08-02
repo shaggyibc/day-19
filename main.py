@@ -2,6 +2,7 @@ import turtle
 from turtle import Turtle, Screen
 import random
 screen = Screen()
+screen.bgcolor("grey")
 turtle.colormode(255)
 is_race_on = False
 winner = screen.textinput(title="Turtle Race Game", prompt="Pick the winner of the race:red, "
@@ -17,7 +18,7 @@ for turtle_index in range(0, 6):
     new_turtles.shape("turtle")
     new_turtles.color(colors[turtle_index])
     new_turtles.penup()
-    new_turtles.goto(x=-300, y=y_position[turtle_index])
+    new_turtles.goto(x=-500, y=y_position[turtle_index])
     all_turtles.append(new_turtles)
 
 if winner:
@@ -27,8 +28,14 @@ while is_race_on:
     for turtle in all_turtles:
         move_distance = random.randrange(0, 10)
         turtle.forward(move_distance)
-        if turtle.xcor() > 280:
+        if turtle.xcor() > 400:
+            turtle.pendown()
+            turtle.home()
+            turtle.resizemode("user")
+            turtle.shapesize(5, 5, 12)
+            turtle.shapesize(outline=8)
             color_win = turtle.pencolor()
+            blank = screen.textinput(title="WINNER!!!!!!", prompt=f"Winner is {color_win}!!!")
             print(f"{color_win} was the winner!")
             if color_win == winner:
                 print(f"You won!!!!")
