@@ -1,5 +1,8 @@
 import turtle
 from turtle import Turtle, Screen
+from scoreboard import Scoreboard
+FONT = ('Arial', 50, 'normal')
+scoreboard = Scoreboard()
 import random
 screen = Screen()
 screen.bgcolor("grey")
@@ -26,7 +29,7 @@ if winner:
 
 while is_race_on:
     for turtle in all_turtles:
-        move_distance = random.randrange(0, 10)
+        move_distance = random.randrange(0, 100)
         turtle.forward(move_distance)
         if turtle.xcor() > 400:
             turtle.pendown()
@@ -35,8 +38,9 @@ while is_race_on:
             turtle.shapesize(5, 5, 12)
             turtle.shapesize(outline=8)
             color_win = turtle.pencolor()
-            blank = screen.textinput(title="WINNER!!!!!!", prompt=f"Winner is {color_win}!!!")
-            print(f"{color_win} was the winner!")
+            # blank = screen.textinput(title="WINNER!!!!!!", prompt=f"Winner is {color_win}!!!")
+            # print(f"{color_win} was the winner!")
+            scoreboard.write(f"The winner is {color_win}", font=FONT)
             if color_win == winner:
                 print(f"You won!!!!")
             else:
